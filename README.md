@@ -4,9 +4,9 @@ A **Netflix landing page clone** built with **HTML, CSS & JavaScript**.
 Fully responsive and styled with hover effects to match the real Netflix feel.
 
 ## 📊 Repo Stats
-![Stars](https://img.shields.io/github/stars/BlueInk07/Netflix-Clone?style=social)  
-![Forks](https://img.shields.io/github/forks/BlueInk07/Netflix-Clone?style=social)  
-![License](https://img.shields.io/github/license/BlueInk07/Netflix-Clone)
+![Stars](https://img.shields.io/github/stars/BlueInk07/Netflix?style=social)  
+![Forks](https://img.shields.io/github/forks/BlueInk07/Netflix?style=social)  
+![License](https://img.shields.io/github/license/BlueInk07/Netflix)
 
 ## 🚀 Features
 - Fully responsive Netflix-style homepage  
@@ -20,5 +20,5 @@ Fully responsive and styled with hover effects to match the real Netflix feel.
 
 ## ⚡ Quick Start
 ```bash
-git clone https://github.com/BlueInk07/Netflix-Clone.git
+git clone https://github.com/BlueInk07/Netflix.git
 cd Netflix-Clone
