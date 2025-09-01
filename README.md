@@ -7,9 +7,9 @@
 ---
 
 ## 📊 Repo Stats
-![Stars](https://img.shields.io/github/stars/your-username/Netflix-Clone?style=social)  
-![Forks](https://img.shields.io/github/forks/your-username/Netflix-Clone?style=social)  
-![License](https://img.shields.io/github/license/your-username/Netflix-Clone)  
+![Stars](https://img.shields.io/github/stars/BlueInk07/Netflix-Clone?style=social)  
+![Forks](https://img.shields.io/github/forks/BlueInk07/Netflix-Clone?style=social)  
+![License](https://img.shields.io/github/license/BlueInk07/Netflix-Clone)  
 
 ---
 
