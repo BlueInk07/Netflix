@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netflix India - Watch TV Shows Online, Watch Movies Online</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: relative;
+            z-index: 4;
+        }
+
+        .navcontainer {
+            z-index: 2;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 30px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            gap: 30px;
+            padding: 25px max(5vw, 30px);
+        }
+
+        .navitems {
+            list-style: none;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .logo {
+
+            height: 60px;
+            margin-right: auto;
+            margin-left: max(5vw, 30px);
+        }
+
+
+
+        .signin {
+            padding: 8px 16px;
+            border: 1px solid #e50914;
+            background-color: #e50914;
+            color: white;
+            font-weight: bold;
+            font-size: larger;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            height: 40px;
+            margin-top: 10px;
+
+        }
+
+        .signin:hover {
+            background-color: #b20710;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(229, 9, 20, 0.6);
+        }
+
+        .custom-dropdown {
+            margin-top: 10px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.598);
+            border-radius: 4px;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.82);
+            cursor: pointer;
+            width: max-content;
+            height: 40px;
+
+        }
+
+        .custom-dropdown .translate-icon {
+            width: 24px;
+            height: 24px;
+            color: rgb(181, 173, 173);
+        }
+
+
+        #languageSelect {
+            background-color: rgba(0, 0, 0, 0.826);
+            color: rgba(181, 173, 173, 0.879);
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            appearance: none;
+            outline: none;
+            padding-right: 20px;
+            min-width: 100px;
+
+
+        }
+
+        .custom-dropdown::after {
+            content: '';
+            position: absolute;
+            right: 10px;
+            top: 60%;
+            transform: translateY(-50%);
+            border: 6px solid transparent;
+            border-top-color: rgba(255, 255, 255, 0.685);
+            pointer-events: none;
+
+        }
+
+
+        .mainbg {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            overflow-y: hidden;
+        }
+
+        .mainbg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blacktint {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .maintxt {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .textblock h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .textblock .p1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .textblock .p2 {
+            font-size: 1.3rem;
+            line-height: 1.5;
+        }
+
+        .email-box {
+            display: flex;
+            width: 500px;
+            height: 52px;
+            margin-top: 20px;
+            gap: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .email-box input {
+            flex: 1;
+            padding: 5px;
+            font-size: 1.2rem;
+            border: 1px solid rgb(192, 192, 192);
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            background-color: rgba(15, 14, 14, 0.603);
+            color: white;
+        }
+
+        .email-box button {
+            padding: 10px 10px;
+            background-color: #e50914;
+            color: rgba(255, 255, 255, 0.95);
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+            font-weight: bold;
+        }
+
+        .email-box button:hover {
+            background-color: #9a080f;
+        }
+
+        main {
+            padding: 50px 30px;
+            background-color: #000000;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .FirstTV {
+            height: 80vh;
+            width: 100%;
+            background-color: rgb(0, 0, 0);
+            margin-left: -30px;
+            margin-top: -40px;
+        }
+
+        .phone {
+            height: 80vh;
+            width: 100%;
+            background-color: rgb(0, 0, 0);
+            margin-left: -30px;
+            margin-top: 10px;
+        }
+
+        .tvimg img {
+            height: 450px;
+            margin-left: 750px;
+            margin-top: 25px;
+            position: relative;
+            z-index: 6;
+
+        }
+
+        .tvvid video {
+            position: relative;
+            z-index: 5;
+            margin-left: 848px;
+            margin-top: -800px;
+            width: 600px;
+            height: 400px;
+
+        }
+
+        .text1 {
+            margin-top: -300px;
+            margin-left: 150px;
+            font-size: x-large;
+
+        }
+
+        .FirstTV p {
+            line-height: 2.5;
+        }
+
+        .secondp {
+            margin-top: -30px;
+        }
+
+        .img2 img {
+            margin-top: 35px;
+            margin-left: 150px;
+            height: 450px;
+            z-index: 9;
+
+        }
+
+        .img2 img:nth-child(2) {
+            transform: translateX(-474px) translateY(-26px);
+            /* You can adjust the value */
+            /* position: relative;
+         z-index: 6; */
+            height: 380px;
+            width: 198px;
+            border-radius: 20px;
+
+        }
+
+        .text2 h2 {
+            font-weight: lighter;
+            line-height: 1;
+            transform: translatey(-150px) translateX(-220px);
+        }
+
+        .text2 h1 {
+            transform: translateX(570px) translateY(-280px);
+            font-size: 45px;
+        }
+
+        .text2 {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .SecondTV {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            background-color: black;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        .tv-wrapper {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .tv-image {
+            width: 90%;
+            height: auto;
+            display: block;
+            position: relative;
+            z-index: 2;
+            transform: translateX(100px);
+        }
+
+        .tv-video {
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            width: 55%;
+            height: 50%;
+            transform: translate(-50%, -50%) translateY(-100px) translateX(-22px);
+            /* Move up by 10px */
+
+            /* Center accurately */
+            z-index: 1;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+
+        .tv-text {
+            display: flex;
+            justify-content: flex-start;
+            color: white;
+            text-align: center;
+            margin-top: 40px;
+            transform: translateX(-260px) translateY(-450px);
+        }
+
+        .tv-text h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+
+        }
+
+        .tv-text p {
+            font-size: 1.7rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1;
+            transform: translateY(100px) translateX(-432px);
+        }
+
+        .text4 {
+            display: flex;
+
+
+        }
+
+        .text4 h1 {
+            font-size: 40px;
+            transform: translateX(700px)translateY(-300px);
+            margin-left: -2px;
+        }
+
+        .text4 p {
+            font-size: 25px;
+            transform: translateX(250px)translateY(-220px);
+
+        }
+
+       /* Base styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+/* Section styling */
+.faq-section {
+  max-width: 1000px;
+  margin: 100px auto;
+  padding: 0 20px;
+}
+
+.faq-title {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* FAQ container */
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Hide default arrow */
+summary {
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Question box */
+summary {
+  background-color: #303030;
+  padding: 25px 30px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+summary:hover {
+  background-color: #454545;
+}
+
+/* Plus icon */
+.plus-icon {
+  font-size: 2rem;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+/* Transform + to × when open */
+details[open] .plus-icon {
+  transform: rotate(45deg);
+}
+.netflix-bottom-footer {
+  margin-top: 50px;
+  padding: 30px 20px;
+  border-top: 1px solid #333;
+  background-color: #141414;
+  color: #757575;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 30px;
+  max-width: 800px;
+}
+
+.footer-links a {
+  color: #757575;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.footer-links a.underline {
+  text-decoration: underline;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.language-dropdown select {
+  background-color: #141414;
+  color: #757575;
+  border: 1px solid #757575;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.language-dropdown select:hover {
+  border-color: white;
+  color: white;
+}
+
+
+
+
+
+
+        @media (max-width: 768px) {
+            .textblock h1 {
+                font-size: 2rem;
+            }
+
+            .textblock .p1 {
+                font-size: 1.5rem;
+            }
+
+            .textblock .p2 {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+
+            .email-box {
+                flex-direction: column;
+                width: 90%;
+                height: auto;
+                gap: 10px;
+            }
+
+            .email-box input,
+            .email-box button {
+                border-radius: 4px;
+                width: 100%;
+            }
+
+            .navcontainer {
+                flex-direction: column;
+                align-items: flex-end;
+                padding: 20px;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="navcontainer">
+                <img src="logo.png" alt="Netflix Logo" class="logo" />
+                <div class="navitems translate">
+                    <div class="custom-dropdown">
+                        <span class="material-icons" style="color:rgb(174, 161, 161);">translate</span>
+
+
+
+                        <select class="language-dropdown" id="languageSelect">
+                            <option value="en">English</option>
+                            <option value="hi">हिन्दी</option>
+                            <option value="es">Español</option>
+                            <option value="fr">Français</option>
+                            <option value="de">Deutsch</option>
+                            <option value="ja">日本語</option>
+                            <option value="ko">한국어</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="signin">Sign In</button>
+            </div>
+        </nav>
+
+        <div class="mainbg">
+            <img src="back.jpg" alt="Background Image" />
+            <div class="blacktint"></div>
+            <div class="maintxt">
+                <div class="textblock">
+                    <h1>Unlimited movies, TV shows and more.</h1>
+                    <p class="p1">Watch anywhere. Cancel anytime.</p>
+                    <p class="p2">Ready to watch? Enter your email to create or restart your membership</p>
+                    <div class="email-box">
+                        <input type="email" placeholder="Enter your email address" />
+                        <button>Get Started &gt;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div style="height: 7px; background-color: rgb(62, 62, 62); width: 100%;"></div>
+
+    <main>
+        <div class="FirstTV">
+            <div class="tvimg">
+                <img src="image-tv-1.png" alt="">
+            </div>
+            <div class="tvvid">
+                <video src="video1.m4v" autoplay loop muted playsinline></video>
+            </div>
+            <div class="text1">
+                <h1>Enjoy on your TV</h1>
+                <p> Watch on smart TVs, PlayStation, Xbox,Chromecast,
+                </p>
+                <p class="secondp">Apple TV, Blu-ray players and more.</p>
+            </div>
+        </div>
+        <div style="height: 7px; background-color: rgb(62, 62, 62); width: 100%;"></div>
+        <div class="phone">
+            <div class="img2">
+                <img src="phone.png" alt="">
+                <img src="one.png" alt="">
+            </div>
+            <div class="text2">
+                <h1> Download your shows to watch offline</h1>
+                <h2> Save your favourite easily and always have something to watch.</h2>
+            </div>
+        </div>
+        <div style="height: 7px; background-color: rgb(62, 62, 62); width: 100%;"></div>
+
+
+        <div class="SecondTV">
+            <div class="tv-wrapper">
+                <img src="image-tv-2.png" alt="TV Image" class="tv-image" />
+                <video src="video2.m4v" autoplay loop muted playsinline class="tv-video"></video>
+            </div>
+            <div class="tv-text">
+                <h1>Watch Everywhere</h1>
+                <p>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.</p>
+            </div>
+        </div>
+        <div style="height: 7px; background-color:  rgb(62, 62, 62); width: 100%;"></div>
+
+
+        <div class="kids">
+            <img src="image-3.png" alt="">
+            <div class="text4">
+                <h1>Create profiles for kids</h1>
+                <p> Send children on adventures with their favourite
+                    characters
+                </p>
+
+            </div>
+        </div>
+        <div style="height: 7px; background-color:  rgb(62, 62, 62); width: 100%;"></div>
+
+
+    </main>
+
+    <footer>
+       <section class="faq-section">
+    <h1 class="faq-title">Frequently Asked Questions</h1>
+
+    <div class="faq-container">
+
+      <details>
+        <summary>What is Netflix?<span class="plus-icon">+</span></summary>
+      </details>
+
+      <details>
+        <summary>How much does Netflix cost?<span class="plus-icon">+</span></summary>
+      </details>
+
+      <details>
+        <summary>Where can I watch?<span class="plus-icon">+</span></summary>
+      </details>
+
+      <details>
+        <summary>How do I cancel?<span class="plus-icon">+</span></summary>
+      </details>
+
+      <details>
+        <summary>What can I watch on Netflix?<span class="plus-icon">+</span></summary>
+      </details>
+
+      <details>
+        <summary>Is Netflix good for kids?<span class="plus-icon">+</span></summary>
+      </details>
+
+    </div>
+
+
+        <p class="p2" style="text-align:center; margin-top: 40px; font-size: 20px;">
+      Ready to watch? Enter your email to create or restart your membership
+    </p>
+    <div class="email-box" style="margin: 20px auto; max-width: 500px;">
+      <input type="email" placeholder="Enter your email address" />
+      <button>Get Started &gt;</button>
+    </div>
+</section>
+<section class="netflix-bottom-footer">
+  <div class="footer-links">
+    <a href="#" class="underline">Audio and Subtitles</a>
+    <a href="#">Help Center</a>
+    <a href="#" class="underline">Gift Cards</a>
+    <a href="#">Media Center</a>
+    <a href="#" class="underline">Investor Relations</a>
+    <a href="#">Jobs</a>
+    <a href="#" class="underline">Terms of Use</a>
+    <a href="#">Privacy</a>
+    <a href="#" class="underline">Legal Notices</a>
+    <a href="#">Corporate Information</a>
+    <a href="#">Contact Us</a>
+  </div>
+
+  <div class="language-dropdown">
+    <select>
+      <option>English</option>
+      <option>हिन्दी</option>
+      <option>Español</option>
+      <option>Français</option>
+      <!-- Add more languages as needed -->
+    </select>
+  </div>
+</section>
+
+  
+    </footer>
+</body>
+
+</html>
