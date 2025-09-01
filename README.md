@@ -1,4 +1,3 @@
-# Netflix
 # 🎬 Netflix Clone  
 
 > A **Netflix landing page clone** built with **HTML, CSS & JavaScript**.  
@@ -17,7 +16,6 @@
 - Fully responsive Netflix-style homepage  
 - Video background in banner  
 - Hover animations on cards  
-- Multi-section scrolling  
 
 ---
 
@@ -29,6 +27,5 @@
 ---
 
 ## ⚡ Quick Start
-```bash
-git clone https://github.com/your-username/Netflix-Clone.git
+git clone https://github.com/BlueInk07/Netflix-Clone.git
 cd Netflix-Clone
